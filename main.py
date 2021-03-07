@@ -4,6 +4,7 @@ import os
 import discord
 from dotenv import load_dotenv
 import random
+from keep_alive import keep_alive
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -30,5 +31,5 @@ async def on_message(message):
     if 'albania' in message.content.lower():
         response = random.choice(albaniafacts)
         await message.channel.send(response)
-
+keep_alive()
 client.run(TOKEN)
