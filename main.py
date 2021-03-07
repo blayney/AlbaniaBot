@@ -10,13 +10,14 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 client = discord.Client()
-
+JJMC = 0
 @client.event
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
 
 @client.event
 async def on_message(message):
+    global JJMC
     if message.author == client.user:
         return
 
@@ -31,5 +32,16 @@ async def on_message(message):
     if 'albania' in message.content.lower():
         response = random.choice(albaniafacts)
         await message.channel.send(response)
+
+    if 'you just advanced to level' in message.content:
+        await message.channel.send('mbyll gojën yOu jUsT leVeLLeD uP kush jep qij')
+        await message.channel.send('https://tenor.com/view/hahaha-shut-up-gif-18027513')
+    
+    if message.author.id == 394838572944850954:
+        JJMC += 1
+        if JJMC == 10:
+          await message.channel.send('Poland man speaks!')
+          await message.channel.send('https://tenor.com/view/poland-fajen-polska-gurom-dancing-gif-16498246')
+          JJMC = 0
 keep_alive()
 client.run(TOKEN)
