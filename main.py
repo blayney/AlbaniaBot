@@ -1,5 +1,6 @@
 # bot.py
 import os
+import platform
 
 import discord
 from dotenv import load_dotenv
@@ -32,6 +33,10 @@ async def on_message(message):
     if 'albania' in message.content.lower():
         response = random.choice(albaniafacts)
         await message.channel.send(response)
+    
+    if 'bot test' in message.content.lower():
+        response = platform.uname()
+        await message.channel.send(response)
 
     if 'you just advanced to level' in message.content:
         await message.channel.send('mbyll gojën yOu jUsT leVeLLeD uP kush jep qij')
@@ -39,7 +44,8 @@ async def on_message(message):
     
     if message.author.id == 394838572944850954:
         JJMC += 1
-        if JJMC == 10:
+        print(JJMC, "message count")
+        if JJMC == 99:
           await message.channel.send('Poland man speaks!')
           await message.channel.send('https://tenor.com/view/poland-fajen-polska-gurom-dancing-gif-16498246')
           JJMC = 0
